@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: docker-mysql   # used in app.properties
+    labels:
+        app: docker-mysql
+spec: 
+    selector: 
+        app: docker-mysql
+    type: NodePort
+    ports: 
+        - port: 3306   # Cluster port
+          targetPort: 3306  # Container port
+          nodePort: 30001  # Outside the cluster port
